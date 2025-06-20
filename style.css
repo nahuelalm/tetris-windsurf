@@ -1,0 +1,309 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #00ff00;
+    --secondary-color: #00cc00;
+    --background-dark: #1a1a1a;
+    --background-light: #2a2a2a;
+    --border-radius: 12px;
+    --shadow-sm: 0 2px 4px rgba(0, 255, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 255, 0, 0.15);
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.game-container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    box-shadow: var(--shadow-md);
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 15px var(--primary-color), 0 0 30px var(--primary-color);
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.game-area {
+    background: linear-gradient(45deg, #000 0%, var(--background-dark) 100%);
+    border: 2px solid var(--primary-color);
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin: 0 auto;
+    width: 240px;
+    height: 480px;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(10, 22px);
+    grid-template-rows: repeat(20, 22px);
+    gap: 1px;
+    width: 240px;
+    height: 480px;
+    padding: 7px;
+    box-sizing: border-box;
+    position: relative;
+    background: linear-gradient(45deg, #1a1a1a 0%, #2a2a2a 100%);
+    min-height: 480px;
+}
+
+.cell {
+    width: 22px;
+    height: 22px;
+    background-color: #000;
+    border: 1px solid #444;
+    transition: all 0.1s ease;
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.cell.active {
+    background-color: #00ff00;
+    opacity: 1;
+    transform: scale(1.05);
+    transition: all 0.1s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.cell.filled {
+    opacity: 1;
+}
+
+
+/* Estilos para pantallas pequeñas (móviles) */
+@media screen and (max-width: 480px) {
+    .game-container {
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+        text-shadow: 0 0 10px #00ff00;
+        letter-spacing: 2px;
+        color: #00ff00;
+    }
+
+    .game-area {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .game-board {
+        width: 100%;
+        height: 500px;
+        background: linear-gradient(45deg, #1a1a1a 0%, #2a2a2a 100%);
+    }
+
+    .cell {
+        width: 24px;
+        height: 24px;
+        border: 1px solid #444;
+        transition: all 0.2s ease;
+    }
+
+    .cell.active {
+        background-color: #00ff00;
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+    }
+
+    #start-button {
+        width: 100%;
+        max-width: 300px;
+        margin: 1.5rem auto;
+        padding: 1rem;
+        font-size: 1.2rem;
+        border-radius: 10px;
+        background: linear-gradient(45deg, #00ff00 0%, #00cc00 100%);
+        border: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 255, 0, 0.2);
+        display: block;
+    }
+
+    #start-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 255, 0, 0.3);
+    }
+
+    #game-over {
+        font-size: 1.6rem;
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 10px;
+        color: #00ff00;
+    }
+
+    #restart-button {
+        width: 100%;
+        max-width: 200px;
+        margin: 1rem auto;
+        padding: 0.8rem;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        background: linear-gradient(45deg, #00ff00 0%, #00cc00 100%);
+        border: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 255, 0, 0.2);
+        display: block;
+    }
+
+    #restart-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 255, 0, 0.3);
+    }
+}
+
+/* Estilos para pantallas medianas */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .game-container {
+        padding: 20px;
+        width: 80%;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .score-board {
+        font-size: 20px;
+    }
+
+    .controls-info {
+        font-size: 15px;
+    }
+
+    button {
+        padding: 12px 24px;
+        font-size: 18px;
+    }
+
+    .game-area {
+        width: 80%;
+        padding-bottom: 180%;
+    }
+}
+
+/* Estilos para pantallas grandes */
+@media screen and (min-width: 769px) {
+    .game-container {
+        margin: 30px auto;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    .score-board {
+        font-size: 24px;
+    }
+
+    .controls-info {
+        font-size: 16px;
+    }
+
+    button {
+        padding: 15px 30px;
+        font-size: 20px;
+    }
+
+    .game-area {
+        width: 100%;
+        padding-bottom: 200%;
+    }
+}
+
+.score-board {
+    margin: 20px 0;
+    color: #00ff00;
+    font-size: 24px;
+    text-shadow: 0 0 5px #00ff00;
+}
+
+button {
+    background: linear-gradient(45deg, #00ff00, #00cc00);
+    color: #000;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px #00ff00;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.4);
+    background: linear-gradient(45deg, #00cc00, #00ff00);
+}
+
+.controls-info {
+    margin-top: 20px;
+    color: #00ff00;
+    font-size: 16px;
+    text-shadow: 0 0 3px #00ff00;
+}
+
+.controls-info p {
+    margin: 5px 0;
+}
+
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.4);
+    background: linear-gradient(45deg, #00cc00, #00ff00);
+}
+
+.controls-info {
+    margin-top: 20px;
+    color: #00ff00;
+    font-size: 16px;
+    text-shadow: 0 0 3px #00ff00;
+}
+
+.controls-info p {
+    margin: 5px 0;
+}

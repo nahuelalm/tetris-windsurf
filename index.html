@@ -1,41 +1,32 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="h-full bg-gradient-to-br from-gray-900 to-gray-800">
 <head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css"></link>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doom Game</title>
-    <style>
-        body {
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #000;
-            font-family: Arial, sans-serif;
-        }
-        canvas {
-            border: 2px solid #fff;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-        .controls {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            color: #fff;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px;
-            border-radius: 5px;
-        }
-    </style>
+    <title>Tetris</title>
 </head>
-<body>
-    <div class="controls">
-        <p>Controles:</p>
-        <p>↑↓←→ - Mover</p>
-        <p>Space - Disparar</p>
-        <p>Barra verde - Salud</p>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800">
+    <div class="game-container">
+        <div class="game-area bg-gradient-to-br from-black to-gray-900 border-2 border-green-500 rounded-xl shadow-lg">
+            <div id="game-board" class="game-board"></div>
+            <div id="game-over" class="hidden absolute inset-0 bg-black/80 items-center justify-center text-2xl text-green-500 font-bold">
+                ¡Juego Terminado!
+                <button id="restart-button" class="mt-4 px-6 py-2 bg-green-500 text-black rounded-lg hover:bg-green-400 transition-colors">
+                    Reiniciar
+                </button>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <button id="start-button" class="w-full max-w-[300px] mx-auto bg-green-500 text-black px-8 py-4 rounded-xl font-semibold hover:bg-green-400 transition-all duration-200 transform hover:scale-105">
+                Iniciar Juego
+            </button>
+        </div>
     </div>
-    <script type="module" src="index.js"></script>
+
+    <script type="module" src="./tetris.js"></script>
+    <script type="module" src="./index.js"></script>
 </body>
 </html>

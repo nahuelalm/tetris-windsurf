@@ -1,12 +1,19 @@
 {
-  "name": "windsurf-project",
+  "name": "tetris-game",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Tetris game with modern UI",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "dependencies": {
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "jest": "^30.0.2"
+  }
 }
