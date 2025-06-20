@@ -2,6 +2,12 @@
 
 Una implementación moderna del clásico Tetris, desarrollada con tecnologías web modernas para ofrecer una experiencia de juego fluida y visualmente atractiva.
 
+## Jugar Online
+
+¡Juega ahora en línea!
+
+[![Jugar Tetris](https://img.shields.io/badge/Jugar%20ahora-%E2%9E%96-blue)](https://nahuelalm.github.io/tetris-windsurf/)
+
 ## Características
 
 - 🎮 **Jugabilidad Clásica**: Rotación, movimiento y caída de piezas con controles precisos
@@ -12,8 +18,8 @@ Una implementación moderna del clásico Tetris, desarrollada con tecnologías w
 ## Controles
 
 - 🎮 Movimiento: WASD o flechas
-- 🔄 Rotación: Barra espaciadora
-- ⚡ Acelerar caída: Tecla S o flecha abajo
+- 🔄 Rotación: W o flecha arriba
+- ⚡ Acelerar caída: S o flecha abajo
 
 ## Tecnologías Utilizadas
 
@@ -25,8 +31,8 @@ Una implementación moderna del clásico Tetris, desarrollada con tecnologías w
 
 1. 📥 Clona el repositorio:
 ```bash
-git clone https://github.com/nahuelalm/tetris.git
-cd tetris
+git clone https://github.com/nahuelalm/doom-windsurf.git
+cd doom-windsurf
 ```
 
 2. 🌐 Abre el archivo `index.html` en tu navegador
