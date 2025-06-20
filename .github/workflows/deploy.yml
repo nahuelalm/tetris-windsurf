@@ -8,10 +8,16 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+      with:
+        ref: main
+        fetch-depth: 0
+        ssh-key: ${{ secrets.SSH_KEY }}
 
     - name: Setup Node.js
       uses: actions/setup-node@v4
@@ -30,3 +36,8 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./dist
         publish_branch: gh-pages
+        force_orphan: true
+        clean: true
+        keep_history: true
+        verbose: true
+        cname: tetris-windsurf.github.io
