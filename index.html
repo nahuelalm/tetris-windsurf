@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-gradient-to-br from-gray-900 to-gray-800">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  <script type="module" crossorigin src="/assets/index-9ALFi1cS.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-C4_ubJwa.css">
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800">
+    <div class="game-container">
+        <div class="game-area bg-gradient-to-br from-black to-gray-900 border-2 border-green-500 rounded-xl shadow-lg relative">
+            <div id="game-board" class="game-board"></div>
+            <div id="game-over" class="hidden absolute inset-0 bg-black/80 items-center justify-center text-2xl text-green-500 font-bold">
+                ¡Juego Terminado!
+                <button id="restart-button" class="mt-4 px-6 py-2 bg-green-500 text-black rounded-lg hover:bg-green-400 transition-colors">
+                    Reiniciar
+                </button>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <button id="start-button" class="w-full max-w-[300px] mx-auto bg-green-500 text-black px-8 py-4 rounded-xl font-semibold hover:bg-green-400 transition-all duration-200 transform hover:scale-105">
+                Iniciar Juego
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>
