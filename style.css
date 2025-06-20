@@ -105,10 +105,7 @@ h1 {
 @media screen and (max-width: 480px) {
     .game-container {
         width: 100%;
-        max-width: 350px;
-        margin: 0 auto;
-        padding: 1rem;
-        text-align: center;
+        display: flex;
     }
 
     h1 {
@@ -120,12 +117,8 @@ h1 {
     }
 
     .game-area {
-        width: 100%;
-        max-width: 300px;
-        margin: 0 auto;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+       justify-content: center;
+       display: flex;
     }
 
     .game-board {
@@ -148,24 +141,16 @@ h1 {
     }
 
     #start-button {
-        width: 100%;
-        max-width: 300px;
-        margin: 1.5rem auto;
-        padding: 1rem;
-        font-size: 1.2rem;
-        border-radius: 10px;
-        background: linear-gradient(45deg, #00ff00 0%, #00cc00 100%);
-        border: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 255, 0, 0.2);
-        display: block;
+        display: none;
     }
 
     #start-button:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(0, 255, 0, 0.3);
     }
-
+    .mt-8 {
+        display: none;
+    }
     #game-over {
         font-size: 1.6rem;
         padding: 2rem;
