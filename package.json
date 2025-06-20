@@ -1,5 +1,5 @@
 {
-  "name": "tetris-game",
+  "name": "tetris-windsurf",
   "version": "1.0.0",
   "description": "Tetris game with modern UI",
   "scripts": {
@@ -19,5 +19,5 @@
     "jest": "^30.0.2",
     "vite": "^6.3.5"
   },
-  "homepage": "https://nahuelalm.github.io/doom-windsurf/"
+  "homepage": "https://nahuelalm.github.io/tetris-windsurf/"
 }
