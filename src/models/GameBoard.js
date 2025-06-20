@@ -40,6 +40,10 @@ export class GameBoard {
         this.cells.forEach(cell => {
             cell.style.backgroundColor = '#000';
             cell.classList.remove('active', 'filled');
+            cell.style.transition = 'none';
+            setTimeout(() => {
+                cell.style.transition = 'background-color 0.2s, transform 0.2s';
+            }, 0);
         });
     }
 

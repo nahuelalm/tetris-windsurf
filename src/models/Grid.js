@@ -5,6 +5,22 @@ export class Grid {
         this.grid = Array(height).fill().map(() => Array(width).fill(null));
     }
 
+    mergePiece(piece) {
+        if (!piece) return;
+        
+        for (let row = 0; row < piece.shape.length; row++) {
+            for (let col = 0; col < piece.shape[row].length; col++) {
+                if (piece.shape[row][col]) {
+                    const gridX = piece.x + col;
+                    const gridY = piece.y + row;
+                    if (gridY >= 0 && gridY < this.height && gridX >= 0 && gridX < this.width) {
+                        this.grid[gridY][gridX] = piece.color;
+                    }
+                }
+            }
+        }
+    }
+
     // Verifica si una posición está vacía
     isEmpty(x, y) {
         return this.grid[y] && this.grid[y][x] === null;
@@ -27,25 +43,31 @@ export class Grid {
 
     // Verifica si hay líneas completas y las elimina
     clearLines() {
-        const linesToDelete = [];
+        let linesCleared = 0;
         
-        for (let row = 0; row < this.height; row++) {
+        // Verificar y eliminar líneas completas desde abajo hacia arriba
+        for (let row = this.height - 1; row >= 0; row--) {
             if (this.grid[row].every(cell => cell !== null)) {
-                linesToDelete.push(row);
+                linesCleared++;
+                // Eliminar la línea completa
+                this.grid.splice(row, 1);
+                // Agregar una nueva línea vacía en la parte superior
+                this.grid.unshift(Array(this.width).fill(null));
+                // Ajustar el índice para mantener la iteración correcta
+                row++;
             }
         }
-
-        linesToDelete.forEach(row => {
-            this.grid.splice(row, 1);
-            this.grid.unshift(Array(this.width).fill(null));
-        });
-
-        return linesToDelete.length;
+        return linesCleared;
     }
 
     // Limpiar la cuadrícula
     clear() {
         this.grid = Array(this.height).fill().map(() => Array(this.width).fill(null));
+    }
+
+    isGameOver() {
+        // El juego termina si hay celdas llenas en la fila superior
+        return this.grid[0].some(cell => cell !== null);
     }
 
     // Obtiene una copia del grid

@@ -40,4 +40,4 @@ jobs:
         clean: true
         keep_history: true
         verbose: true
-        cname: tetris-windsurf.github.io
+        cname: nahuelalm.github.io

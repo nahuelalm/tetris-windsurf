@@ -44,34 +44,33 @@ export class Piece {
     // Rota la pieza
     rotate() {
         // Crear una copia de la forma actual
-        const oldShape = JSON.parse(JSON.stringify(this.shape));
+        const newShape = JSON.parse(JSON.stringify(this.shape));
         
-        // Rotar la pieza
-        const newShape = [];
-        for (let i = 0; i < this.shape[0].length; i++) {
-            newShape[i] = [];
-            for (let j = this.shape.length - 1; j >= 0; j--) {
-                newShape[i].push(this.shape[j][i]);
-            }
-        }
-
-        // Guardar la posición actual
-        const oldX = this.x;
+        // Guardar la posición y forma actual
+        const oldShape = this.shape;
         const oldY = this.y;
         
-        // Ajustar la posición si es necesario
-        while (oldY + newShape.length > this.boardHeight) {
-            oldY--;
+        // Rotar la pieza
+        const rotated = [];
+        for (let i = 0; i < this.shape[0].length; i++) {
+            rotated[i] = [];
+            for (let j = 0; j < this.shape.length; j++) {
+                rotated[i][j] = this.shape[j][i];
+            }
         }
-
+        
+        // Actualizar la rotación
+        this.rotation = (this.rotation + 90) % 360;
+        
         // Verificar si la nueva posición es válida
         if (this.canMove(null, 0, 0, this.boardWidth, this.boardHeight)) {
             // Si es válida, aplicar la rotación
-            this.shape = newShape;
-            this.y = oldY;
+            this.shape = rotated;
         } else {
             // Si no es válida, restaurar la posición anterior
             this.shape = oldShape;
         }
+        
+        return rotated;
     }
 }
